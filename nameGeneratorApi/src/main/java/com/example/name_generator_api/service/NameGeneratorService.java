@@ -1,6 +1,9 @@
 package com.example.name_generator_api.service;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.example.name_generator_api.exception.BadArgsException;
 import com.example.name_generator_api.exception.EmptyListException;
@@ -11,20 +14,8 @@ import com.example.name_generator_api.strategy.NaiveStrategy;
 import com.example.name_generator_api.strategy.NameGenerationStrategy;
 import com.example.name_generator_api.strategy.SectionalStrategy;
 
+@Service
 public class NameGeneratorService {
-	
-	private NameGeneratorService() {
-		this.instances = new ArrayList<>();
-	}
-	
-	public static NameGeneratorService INSTANCE;
-	
-	public static NameGeneratorService getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new NameGeneratorService();
-		}
-		return INSTANCE;
-	}
 
 	private ArrayList<NameGenerationStrategy> instances;
 
@@ -66,5 +57,12 @@ public class NameGeneratorService {
 		default:
 			throw new NotImplementedException(strategyName);
 		}
+	}
+	
+	public List<List<String>> getMethods() {
+		List<List<String>> list = new ArrayList<List<String>>();
+		list.add(List.of("naive"));
+		list.add(List.of("sectional", "sectionSize"));
+		return list;
 	}
 }

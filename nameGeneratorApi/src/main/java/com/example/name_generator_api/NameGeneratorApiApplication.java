@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalTime;
 
-//import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.name_generator_api.exception.BadArgsException;
@@ -21,8 +21,10 @@ import com.example.name_generator_api.strategy.SectionalStrategy;
 public class NameGeneratorApiApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(NameGeneratorApiApplication.class, args);
-		NaiveStrategy naiveGenerator = new NaiveStrategy();
+		SpringApplication.run(NameGeneratorApiApplication.class, args);
+		
+		/**
+		 NaiveStrategy naiveGenerator = new NaiveStrategy();
 		SectionalStrategy sectionalGenerator = new SectionalStrategy(3);
 		NameList list = new NameList();
 		
@@ -56,9 +58,12 @@ public class NameGeneratorApiApplication {
 				e.printStackTrace();
 			}
 		}
+		 */
+		
 	}
 	
-	public static void generateWord(String strategy, String[][] strategyArgs, NameList list) {
+	/**
+	 public static void generateWord(String strategy, String[][] strategyArgs, NameList list) {
 		try {
 			NameGeneratorService generator = NameGeneratorService.getInstance();
 			LocalTime t = LocalTime.now();
@@ -72,5 +77,6 @@ public class NameGeneratorApiApplication {
 			e.printStackTrace();
 		}
 	}
+	 */
 
 } 
