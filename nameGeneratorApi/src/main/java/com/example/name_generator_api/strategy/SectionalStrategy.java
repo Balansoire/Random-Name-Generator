@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.example.name_generator_api.model.NameList;
 import com.example.name_generator_api.exception.EmptyListException;
+import com.example.name_generator_api.exception.ListOfEmptyException;
 
 public class SectionalStrategy extends NameGenerationStrategy {
 	public SectionalStrategy(int sectionSize) {
@@ -28,8 +29,13 @@ public class SectionalStrategy extends NameGenerationStrategy {
 	}
 
 	@Override
-	public String generateName(NameList list) throws EmptyListException {
+	public String generateName(NameList list) throws EmptyListException, ListOfEmptyException {
 		if (list.size() == 0) throw new EmptyListException();
+		Boolean emptyStringInList = true;
+		while (emptyStringInList) {
+			emptyStringInList = list.remove("");
+		}
+		if (list.size() == 0) throw new ListOfEmptyException();
 			
 		//check if token list is generated
 		if (this.currentTokenList == null || this.currentFirstTokenList == null || (this.currentList == null || this.currentList != list)) createTokenLists(list);

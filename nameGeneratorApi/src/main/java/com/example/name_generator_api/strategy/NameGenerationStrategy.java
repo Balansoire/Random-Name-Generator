@@ -1,6 +1,7 @@
 package com.example.name_generator_api.strategy;
 
 import com.example.name_generator_api.exception.EmptyListException;
+import com.example.name_generator_api.exception.ListOfEmptyException;
 import com.example.name_generator_api.model.NameList;
 
 public abstract class NameGenerationStrategy {
@@ -8,9 +9,9 @@ public abstract class NameGenerationStrategy {
 		this.name = name;
 		this.description = description;
 	}
-	public final String name;
-	public final String description;
-	public abstract String generateName(NameList list) throws EmptyListException;
+	public String name;
+	public String description;
+	public abstract String generateName(NameList list) throws EmptyListException, ListOfEmptyException;
 	public String toString() {
 		return "NamegenerationStrategy: " + name;
 	}

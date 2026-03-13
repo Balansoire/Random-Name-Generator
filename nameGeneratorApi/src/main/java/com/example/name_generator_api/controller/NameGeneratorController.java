@@ -8,6 +8,7 @@ import com.example.name_generator_api.dto.GenerateNameResponse;
 import com.example.name_generator_api.dto.GetMethodsResponse;
 import com.example.name_generator_api.exception.BadArgsException;
 import com.example.name_generator_api.exception.EmptyListException;
+import com.example.name_generator_api.exception.ListOfEmptyException;
 import com.example.name_generator_api.exception.NotImplementedException;
 import com.example.name_generator_api.service.NameGeneratorService;
 
@@ -30,7 +31,7 @@ public class NameGeneratorController {
 	@PostMapping("generate")
 	public ResponseEntity<GenerateNameResponse> generate(
 			@RequestBody GenerateNameRequest request
-			) throws EmptyListException, NotImplementedException, BadArgsException {
+			) throws EmptyListException, NotImplementedException, BadArgsException, ListOfEmptyException {
 		
 		String name = service.generateName(
 				request.strategy(),
